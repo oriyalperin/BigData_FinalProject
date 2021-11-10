@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<title>Association Rules Table</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js" integrity="sha512-WL6WGKMPBiM9PnHRYIn5YEtq0Z8XP4fkVb4qy7PP4vhmYQErJ/dySyXuFIMDf1eEYCXCrQrMJfkNwKc9gsjTjA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="/imagesTable/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../vendorTable/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../fontsTable/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../vendorTable/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../vendorTable/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../vendorTable/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../cssTable/util.css">
+	<link rel="stylesheet" type="text/css" href="../cssTable/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100" >
+				<div>	<form method="GET" , action="http://localhost:3001/bigml/itemsets">
+                        <input class="train" id="train" type="submit" value = "TRAIN"/>
+				</div>
+				<div class="modal hidden">
+					<div class="loader" id="loader" ></div>
+					<h4 id="describeLoading"></h4>
+				  </div>
+				  
+				  <div class="overlay hidden"></div>
+				
+					<table id ="rulesTable">
+						<thead>
+							<tr class="table100-head">
+								<th class="column2">Antecedent</th>
+								<th class="column2">Consequent</th>
+								<th class="column2">Support</th>
+								<th class="column2">Confidence</th>
+								<th class="column2">Lift</th>
+
+							</tr>
+						</thead>
+						<tbody id=rulesBody>
+							<%rules.forEach((rule)=>{%>
+								<tr>
+									<td class="column2"><%=rule.leftSide%></td>
+									<td class="column2"><%=rule.rightSide%></td>
+									<td class="column2"><%=rule.support%></td>
+									<td class="column2"><%=rule.confidence%></td>
+									<td class="column2"><%=rule.lift%></td>
+
+								</tr>
+								<%});%>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+<script>
+	const modal = document.querySelector('.modal');
+	const overlay = document.querySelector('.overlay');
+	const openModal = function () {
+		modal.classList.add('see');
+		overlay.classList.remove('hidden');
+	};
+	  
+	const closeModal = function () {
+		modal.classList.add('hidden');
+		overlay.classList.add('hidden');
+	};
+
+function train(){
+	
+        
+  // register event listener for 'section_update' event
+  // inside the event handler we actually change the value of dashboard`s elements 
+ 
+	/*openModal();
+	
+	document.getElementById("describeLoading").innerHTML="Getting Data...";
+	document.getElementById("describeLoading").innerHTML="Searhcing For Associaiton Rules...";
+	var tbl = document.getElementById("rulesTable");
+	tbl.removeChild(tbl.getElementsByTagName("tbody")[0]);*/
+	
+	
+	
+	//tbl.appendChild();
+
+}
+
+</script>
+
+</body>
+</html>
